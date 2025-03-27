@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Productivity Suite | Task Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background bubbles -->
+    <div class="bubble" style="width: 100px; height: 100px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 150px; height: 150px; top: 70%; left: 80%; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 80px; height: 80px; top: 40%; left: 85%; animation-delay: 4s;"></div>
+    <div class="bubble" style="width: 120px; height: 120px; top: 80%; left: 15%; animation-delay: 6s;"></div>
+    <div class="bubble" style="width: 60px; height: 60px; top: 10%; left: 50%; animation-delay: 8s;"></div>
+
+    <div class="container">
+        <div class="reset-info" id="resetTimer">Resets in: 24:00:00</div>
+        <h1>Daily Productivity</h1>
+        
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Enter a new task...">
+            <button id="addButton">
+                <i class="fas fa-plus"></i> Add
+            </button>
+        </div>
+        
+        <div class="stats">
+            <span id="totalTasks">0 tasks</span>
+            <span id="completedTasks">0 completed</span>
+        </div>
+        
+        <ul id="taskList">
+            <div class="empty-state">
+                <i class="fas fa-tasks"></i>
+                <p>Your task list is empty</p>
+            </div>
+        </ul>
+        
+        <p class="motivational-quote">"Productivity is never an accident. It is always the result of a commitment to excellence, intelligent planning, and focused effort." — Paul J. Meyer</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

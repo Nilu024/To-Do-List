@@ -1,0 +1,421 @@
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #4f46e5;
+    --accent: #10b981;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --text-secondary: #9ca3af;
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+    color: var(--text);
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background floating bubbles */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.05);
+    z-index: -1;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
+.container {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid var(--card-border);
+    position: relative;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.reset-info {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    background: rgba(0, 0, 0, 0.03);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.reset-info:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    font-family: 'Source Serif Pro', serif;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    position: relative;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+    margin: 0.8rem auto 0;
+    border-radius: 3px;
+    animation: grow 0.6s ease-out 0.3s both;
+}
+
+@keyframes grow {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.input-group {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    background: white;
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input[type="text"]::placeholder {
+    color: var(--text-secondary);
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#addButton {
+    background: var(--primary);
+    color: white;
+}
+
+#addButton:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+ul {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid var(--card-border);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: slideIn 0.4s ease-out both;
+    transform-origin: top;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+li:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+li .task-content {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex: 1;
+}
+
+li .task-text {
+    flex: 1;
+    word-break: break-word;
+    transition: all 0.2s ease;
+}
+
+li .task-time {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    margin-top: 0.2rem;
+    transition: all 0.2s ease;
+}
+
+li .actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+li button {
+    padding: 0.5rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+li .complete-btn {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+li .complete-btn:hover {
+    background: rgba(16, 185, 129, 0.2);
+    transform: scale(1.1);
+}
+
+li .delete-btn {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+li .delete-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    transform: scale(1.1);
+}
+
+.completed .task-text {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+.completed .task-time {
+    opacity: 0.7;
+}
+
+.completed .complete-btn {
+    background: rgba(16, 185, 129, 0.2) !important;
+}
+
+.motivational-quote {
+    margin-top: 2.5rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-align: center;
+    position: relative;
+    padding-top: 1.5rem;
+    animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+.motivational-quote::before {
+    content: '""';
+    display: block;
+    font-size: 3rem;
+    color: var(--card-border);
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--text-light);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--card-border);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+/* Confetti effect for task completion */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--success);
+    opacity: 0;
+    animation: confetti 2s ease-out;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    button {
+        width: 100%;
+    }
+}
+
+/* Dustbin animation styles */
+@keyframes throwToBin {
+    0% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(100px) scale(0.8);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(200px) scale(0.1) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.dustbin {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: var(--danger);
+    transform: translateY(0);
+    transition: transform 0.3s;
+}
+
+.dustbin.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(-5deg); }
+    50% { transform: translateY(0) rotate(5deg); }
+    75% { transform: translateY(-5px) rotate(-5deg); }
+}
